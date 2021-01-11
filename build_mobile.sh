@@ -52,4 +52,9 @@ NUMBER_GLOBAL=`cat ./version.txt`
 APK_NAME=mobile-qt-wallet-$NUMBER_GLOBAL.beta.$1.apk
 cp $BASE_PATH/build/outputs/apk/debug/*.apk $APK_NAME
 echo "sha256sum = `sha256sum $APK_NAME`";
+# Upload might fail, let's do some retry. Underneath it is rsync, so
+./scp.expect "$APK_NAME" $2
+echo "Retry 1 to upload in case if we was interrupted"
+./scp.expect "$APK_NAME" $2
+echo "Retry 2 to upload in case if we was interrupted"
 ./scp.expect "$APK_NAME" $2
