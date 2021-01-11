@@ -48,8 +48,8 @@ $ANDROID_NDK_ROOT/prebuilt/linux-x86_64/bin/make INSTALL_ROOT=$BASE_PATH install
 $QTDIR/bin/androiddeployqt --input $BASE_PATH/android-mwc-qt-mobile-deployment-settings.json --output $BASE_PATH --android-platform android-29 --jdk $JAVA_HOME --gradle
 
 # apk is debug, it is not signed. But stil let's calculate md5
-$RESULT_APK=$BASE_PATH/build/outputs/apk/debug/mobilebuildpipeline-debug.apk
-$APK_NAME=mobilebuildpipeline-debug-$1.apk
+RESULT_APK=$BASE_PATH/build/outputs/apk/debug/mobilebuildpipeline-debug.apk
+APK_NAME=mobilebuildpipeline-debug-$1.apk
 cp $RESULT_APK $RESULT_APK
 echo "sha256sum = `sha256sum $RESULT_APK`";
 ./scp.expect "$APK_NAME" $2
