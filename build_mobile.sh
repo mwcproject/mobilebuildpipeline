@@ -41,6 +41,13 @@ sed -i 's/ANDROID_ABIS = x86/ANDROID_ABIS = x86 x86_64 armeabi-v7a arm64-v8a/' m
 
 # Note, build is messy because we are using current directory for the build. It is fine for CI/CD, but if you do dev build you better to fix that
 
+# For debug build Android generates the signing keys from the scratch. We want to use the same for each build. Since it is
+# Debug build, that key is not a secret.
+set +e
+mkdir $HOME/.android
+cp debug.keystore  $HOME/.android/debug.keystore
+set -e
+
 $QTDIR/bin/qmake $BASE_PATH/mwc-qt-wallet/mwc-qt-mobile.pro -spec android-clang CONFIG+=qtquickcompiler
 $ANDROID_NDK_ROOT/prebuilt/linux-x86_64/bin/make qmake_all
 $ANDROID_NDK_ROOT/prebuilt/linux-x86_64/bin/make -j8
