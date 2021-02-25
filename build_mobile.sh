@@ -69,3 +69,7 @@ echo "Retry 3 to upload in case if we was interrupted"
 ./scp.expect "$APK_NAME" $2
 echo "Retry 4 to upload in case if we was interrupted"
 ./scp.expect "$APK_NAME" $2
+echo "Retry 5 to upload in case if we was interrupted"
+./scp.expect "$APK_NAME" $2
+echo "Retry 6 to upload in case if we was interrupted"
+./scp.expect "$APK_NAME" $2
