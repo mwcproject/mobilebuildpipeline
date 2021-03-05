@@ -37,7 +37,7 @@ export QTDIR=$BASE_PATH/Qt/5.15.2/android
 export PATH=$JAVA_HOME/bin:$QTDIR/bin:$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH
 
 git clone https://github.com/mwcproject/mwc-qt-wallet.git
-sed -i 's/ANDROID_ABIS = x86/ANDROID_ABIS = x86 x86_64 armeabi-v7a arm64-v8a/' mwc-qt-wallet/mwc-qt-mobile.pro
+sed -i 's/ANDROID_ABIS =/ANDROID_ABIS = x86 x86_64 armeabi-v7a arm64-v8a/' mwc-qt-wallet/mwc-qt-mobile.pro
 
 # Note, build is messy because we are using current directory for the build. It is fine for CI/CD, but if you do dev build you better to fix that
 
